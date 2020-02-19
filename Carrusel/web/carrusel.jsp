@@ -4,6 +4,8 @@
     Author     : DAW203
 --%>
 
+<%@page import="java.lang.String"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -21,15 +23,16 @@
         <h1>Imagenes</h1>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://www.lavanguardia.com/r/GODO/LV/p6/WebSite/2019/03/07/Recortada/img_jsilvestre_20190307-161319_imagenes_lv_terceros_juan_y_medio-kW0-U46905531355PWH-992x558@LaVanguardia-Web.jpg" class="d-block w-100" alt="...">
+                <%ArrayList<String> imagenes=(ArrayList<String>) request.getAttribute("imagenes");
+                for(int i=0;i<imagenes.size();i++){
+                    String cadenaActive="";
+                
+                if (i==0){ cadenaActive=" active";}%>
+                 <div class="carousel-item active">
+                    <img src="<%=imagenes.get(i)%>" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="https://ep01.epimg.net/elpais/imagenes/2019/04/15/eps/1555322078_411484_1555322185_noticia_normal_recorte1.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.avantagecapital.com/wp-content/uploads/2014/07/0026150814rc-1080x1108.jpg" class="d-block w-100" alt="...">
-                </div>
+                <%}%>
+                
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
